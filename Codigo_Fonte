@@ -1,0 +1,162 @@
+        /*=========================================================*/
+        /*======================By:Sr.Almeida======================*/
+        /*=========================================================*/
+        /*===================matheus.aa@live.com===================*/
+        /*=========================================================*/
+        
+//Materiais Utilizados nesse projeto.
+//-----------------------------------
+// Arduino Nano;
+// Protoboard;
+// 4 LED's Verdes;
+// 4 LED's Amarelos;
+// 4 LED's Vermelhos;
+// Display LCD Com Modulo I2C;
+// Plug P2 Mono;
+// Fios Diversos;
+
+#include <FastIO.h> //Livraria Utilizada para o display com o modulo I2C
+#include <I2CIO.h> //Livraria Utilizada para o display com o modulo I2C
+#include <LCD.h> //Livraria Utilizada para o display com o modulo I2C
+#include <LiquidCrystal.h> //Livraria Utilizada para o display com o modulo I2C
+#include <LiquidCrystal_I2C.h> //Livraria Utilizada para o display com o modulo I2C
+#include <LiquidCrystal_SR.h> //Livraria Utilizada para o display com o modulo I2C
+#include <LiquidCrystal_SR2W.h> //Livraria Utilizada para o display com o modulo I2C
+#include <LiquidCrystal_SR3W.h> //Livraria Utilizada para o display com o modulo I2C
+
+#include <Wire.h> 
+
+LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3, POSITIVE);
+
+int led1 = 13; //Led Verde
+int led2 = 12; //Led Verde
+int led3 = 11; //Led Verde
+int led4 = 10; //Led Verde
+
+int led5 = 9; //Led Amarelo
+int led6 = 8; //Led Amarelo
+int led7 = 7; //Led Amarelo
+int led8 = 6; //Led Amarelo
+
+int led9 = 5; //Led Vermelho
+int led10 = 4; //Led Vermelho
+int led11 = 3; //Led Vermelho
+int led12 = 2; //Led Vermelho
+
+
+int volume; // Variavel que vai receber o sinal da porta analogica A0 do Arduino
+
+void setup() {                
+  Serial.begin(9600); // Taxa de Transferencia
+
+  lcd.begin (16,2);
+
+  pinMode(led1, OUTPUT); // Define o Led Verde como saida.
+  pinMode(led2, OUTPUT); // Define o Led Verde como saida.
+  pinMode(led3, OUTPUT); // Define o Led Verde como saida.
+  pinMode(led4, OUTPUT); // Define o Led Verde como saida.
+
+  pinMode(led5, OUTPUT); // Define o Led Amarelo como saida.
+  pinMode(led6, OUTPUT); // Define o Led Amarelo como saida.
+  pinMode(led7, OUTPUT); // Define o Led Amarelo como saida.
+  pinMode(led8, OUTPUT); // Define o Led Amarelo como saida.
+
+  pinMode(led9, OUTPUT); // Define o Led Vermelho como saida.
+  pinMode(led10, OUTPUT); // Define o Led Vermelho como saida.
+  pinMode(led11, OUTPUT); // Define o Led Vermelho como saida.
+  pinMode(led12, OUTPUT); // Define o Led Vermelho como saida.
+
+}
+
+void loop() {
+
+  lcd.setBacklight(HIGH); // Liga o Led da Luz do Display
+  lcd.setCursor(0,0); // Seta o curso na primeira linha do display
+  lcd.print("Volume: "); // Esqueve no Display Volume: 
+  lcd.setCursor(0,1);  // Seta o curso na segunda linha do display
+  lcd.print("4 B Informatica");
+
+  volume = analogRead(A0); // Armazena os dados recebidos da porta analogica na variavel "volume"
+
+  lcd.setCursor(9,0); // Escreve no Display o valor recebido, escreve logo depois da palavra "volume: "
+  lcd.print(volume);  
+
+  if(volume>=22){
+    digitalWrite(led1, HIGH); //Por sua vez o LED Verde Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led1, LOW); //Por sua vez o LED Verde Se torna Desligado.
+  }
+  if(volume>=23){
+    digitalWrite(led2, HIGH); //Por sua vez o LED Verde Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led2, LOW); //Por sua vez o LED Verde Se torna Desligado.
+  }
+  if(volume>=24){
+    digitalWrite(led3, HIGH); //Por sua vez o LED Verde Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led3, LOW); //Por sua vez o LED Verde Se torna Desligado.
+  }
+  if(volume>=25){
+    digitalWrite(led4, HIGH); //Por sua vez o LED Verde Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led4, LOW); //Por sua vez o LED Verde Se torna Desligado.
+  }
+  if(volume>=26){
+    digitalWrite(led5, HIGH); //Por sua vez o LED Amarelo Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led5, LOW); //Por sua vez o LED Amarelo Se torna Desligado.
+  }
+  if(volume>=27){
+    digitalWrite(led6, HIGH); //Por sua vez o LED Amarelo Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led6, LOW); //Por sua vez o LED Amarelo Se torna Desligado.
+  }
+  if(volume>=28){
+    digitalWrite(led7, HIGH); //Por sua vez o LED Amarelo Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led7, LOW); //Por sua vez o LED Amarelo Se torna Desligado.
+  }
+  if(volume>=29){
+    digitalWrite(led8, HIGH); //Por sua vez o LED Amarelo Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led8, LOW); //Por sua vez o LED Amarelo Se torna Desligado.
+  }
+  if(volume>=30){
+    digitalWrite(led9, HIGH); //Por sua vez o LED Vermelho Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led9, LOW); //Por sua vez o LED Vermelho Se torna Desligado.
+  }
+  if(volume>=31){
+    digitalWrite(led10, HIGH); //Por sua vez o LED Vermelho Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led10, LOW); //Por sua vez o LED Vermelho Se torna Desligado.
+  }
+  if(volume>=32){
+    digitalWrite(led11, HIGH); //Por sua vez o LED Vermelho Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led11, LOW); //Por sua vez o LED Vermelho Se torna Desligado.
+  }
+  if(volume>=33){
+    digitalWrite(led12, HIGH); //Por sua vez o LED Vermelho Se torna Ligado.
+  }  
+  else{
+    digitalWrite(led12, LOW); //Por sua vez o LED Vermelho Se torna Desligado.
+  }
+}
+
+        /*=========================================================*/
+        /*======================By:Sr.Almeida======================*/
+        /*=========================================================*/
+        /*===================matheus.aa@live.com===================*/
+        /*=========================================================*/
